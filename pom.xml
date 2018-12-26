@@ -22,11 +22,7 @@
       <scope>test</scope>
     </dependency>
     
-    <dependency>
-			<groupId>com.googlecode.gmail4j</groupId>
-			<artifactId>gmail4j</artifactId>
-			<version>0.4</version>
-		</dependency>
+
     
   </dependencies>
 </project>
