@@ -1,6 +1,9 @@
 package com.Signup.POC.eVerifile;
 
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -15,32 +18,36 @@ import utility.ExcelUtils;
 public class signUpAutomation 
 {
 	
-
+	Properties prop = new Properties();
 			WebDriver driver;
 			
 			SignUpPage objSignUpPage;
 	
 			
 			@BeforeTest
-			public void setup()
+			public void setup() throws IOException
 				{
 
-					
-					System.setProperty("webdriver.chrome.driver", "D:\\Automation\\Setups\\Drivers\\chromedriver_win32\\chromedriver.exe");
+					FileInputStream fis = new FileInputStream(System.getProperty ("user.dir") + "\\env.properties");
+					prop.load(fis);
+				
+					//System.setProperty("webdriver.chrome.driver", "D:\\Automation\\Setups\\Drivers\\chromedriver_win32\\chromedriver.exe");
+					System.setProperty("webdriver.chrome.driver", System.getProperty ("user.dir") + "\\chromedriver.exe");
 					driver = new ChromeDriver();
 					driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 					driver.manage().window().maximize();
-					driver.get("https://eshortline-eworkforce-qa.everifile.com/renovo/");
-					
+					//driver.get("https://eshortline-eworkforce-qa.everifile.com/renovo/");
+					driver.get(prop.getProperty("qaeShortlineURL"));
 					
 					}
 			
 			
 			@DataProvider
-			public Object[][] Authentication() throws Exception
+			public Object[][] SignUpData() throws Exception
 			{
 
-				Object[][] testObjArray = ExcelUtils.getTableArray("D://Automation//GitWorkspace//eVerifile//src//main//java//testData//SignUpData.xlsx","Sheet1", 1);
+				//Object[][] testObjArray = ExcelUtils.getTableArray("D://Automation//GitWorkspace//eVerifile//src//main//java//testData//SignUpData.xlsx","Sheet1", 1);
+				Object[][] testObjArray = ExcelUtils.getTableArray(System.getProperty ("user.dir") + "//src//main//java//testData//SignUpData.xlsx","Sheet1", 1);
 				return (testObjArray);
 
 			}
@@ -49,7 +56,7 @@ public class signUpAutomation
 			
 			
 			
-			@Test(dataProvider = "Authentication")
+			@Test(dataProvider = "SignUpData")
 		    public void testSignUpFirstPage(String FName, String LName, String Email, String Phone, String Password, 
 		    		String reEnterPassword, String Answer1, String Answer2, String PromoCode, String VendorCompanyName, 
 		    		String VendorTaxId, String VendorCompanyPhoneNumber, String VendorCompanyAddressLine1, String VendorCompanyCountry, 
