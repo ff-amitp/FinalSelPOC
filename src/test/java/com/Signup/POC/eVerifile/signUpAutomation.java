@@ -17,12 +17,10 @@ import utility.ExcelUtils;
 
 public class signUpAutomation 
 {
-	
-	Properties prop = new Properties();
 			WebDriver driver;
-			
 			SignUpPage objSignUpPage;
-	
+			Properties prop = new Properties();
+			
 			
 			@BeforeTest
 			public void setup() throws IOException
@@ -31,12 +29,10 @@ public class signUpAutomation
 					FileInputStream fis = new FileInputStream(System.getProperty ("user.dir") + "\\env.properties");
 					prop.load(fis);
 				
-					//System.setProperty("webdriver.chrome.driver", "D:\\Automation\\Setups\\Drivers\\chromedriver_win32\\chromedriver.exe");
 					System.setProperty("webdriver.chrome.driver", System.getProperty ("user.dir") + "\\chromedriver.exe");
 					driver = new ChromeDriver();
 					driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 					driver.manage().window().maximize();
-					//driver.get("https://eshortline-eworkforce-qa.everifile.com/renovo/");
 					driver.get(prop.getProperty("qaeShortlineURL"));
 					
 					}
@@ -45,8 +41,6 @@ public class signUpAutomation
 			@DataProvider
 			public Object[][] SignUpData() throws Exception
 			{
-
-				//Object[][] testObjArray = ExcelUtils.getTableArray("D://Automation//GitWorkspace//eVerifile//src//main//java//testData//SignUpData.xlsx","Sheet1", 1);
 				Object[][] testObjArray = ExcelUtils.getTableArray(System.getProperty ("user.dir") + "//src//main//java//testData//SignUpData.xlsx","Sheet1", 1);
 				return (testObjArray);
 
@@ -67,10 +61,10 @@ public class signUpAutomation
 		    	
 			
 			{
-		    		objSignUpPage = new SignUpPage(driver);
 		    		
+				objSignUpPage = new SignUpPage(driver);
 		    		
-		    		// First Page
+		    		// First Page Actions
 		    		objSignUpPage.clickSignUpLink();
 		    		objSignUpPage.enterVendorFirstName(FName);
 		    		objSignUpPage.enterVendorLastName(LName);
@@ -87,23 +81,18 @@ public class signUpAutomation
 		    		objSignUpPage.clickSignUpFirstPageNextBtn();
 		    		objSignUpPage.clickConfirmPopupOKbtn();
 		    		
-		    		
-		    		
-		    		// Second Page
+		    		// Second Page Actions
 		    		objSignUpPage.clickFCRAchkbox1();
 		    		objSignUpPage.clickFCRAchkbox2();
 		    		objSignUpPage.clickFCRAchkbox3();
 		    		objSignUpPage.clickFCRAchkbox4();
 		    		objSignUpPage.clickSignUpSecondPageNextBtn();
 		    		
-		    		
-		    		// Third Page
+		    		// Third Page Actions
 		    		objSignUpPage.enterVendorPromoCode(PromoCode);
 		    		objSignUpPage.clickSignUpThirdPageNextBtn();
 		    		
-		    		
-		    		
-		    		// Fourth Page
+		    		// Fourth Page Actions
 		    		objSignUpPage.enterVendorCompanyName(VendorCompanyName);
 		    		objSignUpPage.enterVendorTaxId(VendorTaxId);
 		    		objSignUpPage.enterVendorCompanyPhoneNo(VendorCompanyPhoneNumber);
@@ -114,13 +103,11 @@ public class signUpAutomation
 		    		objSignUpPage.enterVendorCompanyPostalCode(VendorCompanyPostalCode);
 		    		objSignUpPage.clickSignUpFourthPageNextBtn();
 		    		
-		    		
-		    		// Fifth Page
+		    		// Fifth Page Actions
 		    		objSignUpPage.clickProgramRadioBUtton();
 		    		objSignUpPage.clickSignUpFifthPageNextBtn();
 		    		
-		    		
-		    		// Sixth Page
+		    		// Sixth Page Actions
 		    		objSignUpPage.enterVendorCardNumber(VendorCardNumber);
 		    		objSignUpPage.enterVendorCardSecurityNumber(VendorCardSecurityNumber);
 		    		objSignUpPage.enterVendorCardExpirationMonth(VendorCardExpirationMonth);
@@ -128,11 +115,10 @@ public class signUpAutomation
 		    		objSignUpPage.clickEverifileTermschkbox();
 		    		objSignUpPage.clickSignUpSixthPageSubmitBtn();
 		    		
-		    		
-		    		// Seventh Page
+		    		// Seventh Page Actions
 		    		objSignUpPage.clickSignUpCompleteSubscriptionBtn();
 		    	    
-		    	}
+		}
 	    		
 
 			
