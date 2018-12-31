@@ -4,6 +4,7 @@
 <test name="Test">
 <classes>
 <class name="com.Signup.POC.eVerifile.signUpAutomation"/>
+<class name="com.Signup.POC.eVerifile.LoginLogoutAutomation"/>
 </classes>
 </test> <!-- Test -->
 </suite> <!-- Suite -->

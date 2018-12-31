@@ -52,11 +52,11 @@ public class ExcelUtils {
 	
 	
 	
-	public static Object[][] getTableArray(String FilePath, String SheetName, int iTestCaseRow) throws Exception
+	public static Object[][] getSignUpData(String FilePath, String SheetName, int iTestCaseRow) throws Exception
 
 		{
 
-			String[][] tabArray = null;
+			String[][] signUpDataArray = null;
 
 			try 
 				{
@@ -74,13 +74,13 @@ public class ExcelUtils {
 					int totalCols = 21;
 
 					
-					tabArray = new String[totalRows][totalCols];
+					signUpDataArray = new String[totalRows][totalCols];
 
 						for (int j = startCol; j <= totalCols; j++, cj++)
 
 							{
-									tabArray[ci][cj] = getCellData(iTestCaseRow, j);
-									System.out.println(tabArray[ci][cj]);
+							signUpDataArray[ci][cj] = getCellData(iTestCaseRow, j);
+									System.out.println(signUpDataArray[ci][cj]);
 
 							}
 
@@ -104,10 +104,69 @@ public class ExcelUtils {
 
 				}
 
-			return (tabArray);
+			return (signUpDataArray);
 
 	}
+	
+	
+	
+	public static Object[][] getLoginDataArray(String FilePath, String SheetName, int iTestCaseRow) throws Exception
 
+	{
+
+		String[][] loginDataArray = null;
+
+		try 
+			{
+
+				FileInputStream ExcelFile = new FileInputStream(FilePath);
+
+				// Access the required test data sheet
+
+				ExcelWBook = new XSSFWorkbook(ExcelFile);
+				ExcelWSheet = ExcelWBook.getSheet(SheetName);
+
+				int startCol = 1;
+				int ci = 0, cj = 0;
+				int totalRows = 1;
+				int totalCols = 2;
+
+				
+				loginDataArray = new String[totalRows][totalCols];
+
+					for (int j = startCol; j <= totalCols; j++, cj++)
+
+						{
+						loginDataArray[ci][cj] = getCellData(iTestCaseRow, j);
+								System.out.println(loginDataArray[ci][cj]);
+
+						}
+
+			}
+
+		catch (FileNotFoundException e)
+
+			{
+
+				System.out.println("Could not read the Excel sheet");
+				e.printStackTrace();
+
+			}
+
+		catch (IOException e)
+
+			{
+
+				System.out.println("Could not read the Excel sheet");
+				e.printStackTrace();
+
+			}
+
+		return (loginDataArray);
+
+}
+	
+	
 	
 	
 	// This method is to read the test data from the Excel cell, in this we are

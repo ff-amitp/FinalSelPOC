@@ -19,6 +19,7 @@ public class signUpAutomation
 {
 			WebDriver driver;
 			SignUpPage objSignUpPage;
+			LoginPage objLoginPage;
 			Properties prop = new Properties();
 			
 			
@@ -41,14 +42,11 @@ public class signUpAutomation
 			@DataProvider
 			public Object[][] SignUpData() throws Exception
 			{
-				Object[][] testObjArray = ExcelUtils.getTableArray(System.getProperty ("user.dir") + "//src//main//java//testData//SignUpData.xlsx","Sheet1", 1);
-				return (testObjArray);
+				Object[][] signUpDataArray = ExcelUtils.getSignUpData(System.getProperty ("user.dir") + "//src//main//java//testData//SignUpData.xlsx","Sheet1", 1);
+				return (signUpDataArray);
 
 			}
-			
-
-			
-			
+					
 			
 			@Test(dataProvider = "SignUpData")
 		    public void testSignUpFirstPage(String FName, String LName, String Email, String Phone, String Password, 
@@ -121,6 +119,8 @@ public class signUpAutomation
 		}
 	    		
 
+			
+			
 			
 			@AfterTest
 			public void CloseSelenium() 

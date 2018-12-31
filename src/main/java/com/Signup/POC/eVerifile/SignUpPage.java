@@ -15,6 +15,8 @@ public class SignUpPage
 
 	WebDriver driver;
 
+	// ----------------------------------------------- OBJECTS LIST ------------------------------------------------------ //
+	
 	// First Screen Objects
 	By signUpLink = By.linkText("Sign up");
 	By vendorFirstName = By.id("x-auto-3-input");
@@ -32,18 +34,15 @@ public class SignUpPage
 	By signUpPageNextBtn = By.xpath("//td[contains (text(), 'Next')]");
 	By confirmPopupOKbtn = By.xpath("//div[contains (text(),'OK')]");
 
-	
 	// Second Screen Objects
 	By FCRAchkbox1 = By.id("x-auto-12");
 	By FCRAchkbox2 = By.id("x-auto-14");
 	By FCRAchkbox3 = By.id("x-auto-16");
 	By FCRAchkbox4 = By.id("x-auto-18");
 	
-
 	// Third Screen Objects
 	By PromoCodeField = By.id("x-auto-19-input");
 	
-
 	// Fourth Screen Objects
 	By vendorCompanyName = By.id("x-auto-29-input");
 	By vendorTaxId = By.id("x-auto-30-input");
@@ -54,11 +53,9 @@ public class SignUpPage
 	By vendorComapnyState = By.id("x-auto-24-input");
 	By vendorComapnyPostalCode = By.id("x-auto-28-input");
 	
-
 	// Fifth Screen Objects
 	By programRadioBUtton = By.id("x-auto-60");
 	
-
 	// Sixth Screen Objects
 	By vendorCardNumber = By.id("x-auto-47-input");
 	By vendorCardSecurityNumber = By.id("x-auto-46-input");
@@ -67,11 +64,17 @@ public class SignUpPage
 	By vendoreVerifileTermschkbox = By.id("x-auto-57");
 	By signUpSixthPageSubmitBtn = By.xpath("//td[contains(text(), 'Submit')]");
 
-	
 	// Seventh Screen Objects
 	By signUpCompleteSubscriptionBtn = By.xpath("//td[@class='GMYNAMQCCB']//div[contains(text(), 'Complete Subscription Process')]");
 
+	// --------------------------------------------- OBJECTS LIST ENDS ---------------------------------------------------- //
 	
+	
+	
+	
+
+	
+	// -------------------------------------------------- METHODS --------------------------------------------------------- //
 	
 	public SignUpPage(WebDriver driver) {
 
@@ -452,5 +455,7 @@ public class SignUpPage
 	 //------------------------------------------------------------//
 	// ------------- Seventh Page Methods END ------------------- //
    //------------------------------------------------------------//
+
+	// ------------------------------------------------ METHODS ENDS ------------------------------------------------------- //	
 	
 }
