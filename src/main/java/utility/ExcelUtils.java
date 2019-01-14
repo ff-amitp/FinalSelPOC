@@ -178,15 +178,66 @@ public class ExcelUtils {
 
 			try 
 				{
+				
+				
+				Cell = ExcelWSheet.getRow(RowNum).getCell(ColNum);
+				Cell.setCellType(CellType.STRING);
+			
+				String CellData = Cell.getStringCellValue();
+				return CellData;
+				//getCellValueAsString(Cell);
 
-					Cell = ExcelWSheet.getRow(RowNum).getCell(ColNum);
+
+					/*Cell = ExcelWSheet.getRow(RowNum).getCell(ColNum);
+					if(ColNum == 1)
+					{
 					Cell.setCellType(CellType.STRING);
+					}
+					else
+					{
+						Cell.setCellType(CellType.STRING);
+					}
 					String CellData = Cell.getStringCellValue();
-					
 					return CellData;
 					//getCellValueAsString(Cell);
-				
+*/				
 
+				
+/*				public void readFormula() throws IOException {
+				    FileInputStream fis = new FileInputStream("Path of your file");
+				    Workbook wb = new XSSFWorkbook(fis);
+				    Sheet sheet = wb.getSheetAt(0);
+				    FormulaEvaluator evaluator = wb.getCreationHelper().createFormulaEvaluator();
+
+				    CellReference cellReference = new CellReference("C2"); // pass the cell which contains the formula
+				    Row row = sheet.getRow(cellReference.getRow());
+				    Cell cell = row.getCell(cellReference.getCol());
+
+				    CellValue cellValue = evaluator.evaluate(cell);
+
+				    switch (cellValue.getCellType()) {
+				        case Cell.CELL_TYPE_BOOLEAN:
+				            System.out.println(cellValue.getBooleanValue());
+				            break;
+				        case Cell.CELL_TYPE_NUMERIC:
+				            System.out.println(cellValue.getNumberValue());
+				            break;
+				        case Cell.CELL_TYPE_STRING:
+				            System.out.println(cellValue.getStringValue());
+				            break;
+				        case Cell.CELL_TYPE_BLANK:
+				            break;
+				        case Cell.CELL_TYPE_ERROR:
+				            break;
+
+				        // CELL_TYPE_FORMULA will never happen
+				        case Cell.CELL_TYPE_FORMULA:
+				            break;
+				    }
+
+				}*/
+				
+				
 				} 
 			
 			catch (Exception e) 
